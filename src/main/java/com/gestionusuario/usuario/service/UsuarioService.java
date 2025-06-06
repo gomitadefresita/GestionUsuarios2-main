@@ -75,7 +75,13 @@ public class UsuarioService {
         } catch (Exception e) {
             return null;
         }
+
     }
+
+    public String actualizarUsuario(){
+
+    }
+
     public String borrarUsuario(int idUsuario){
         try {
             UsuarioEntity usuario = usuariorepository.findByidUsuario(idUsuario);
