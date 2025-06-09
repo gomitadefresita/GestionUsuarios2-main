@@ -94,7 +94,7 @@ public class UsuarioTest {
     public void borrarUsuario(){
         when(usuarioRepository.existsById(1)).thenReturn(true);
         doNothing().when(usuarioRepository).deleteById(1);
-        String result = usuarioService.borrarUsuario(1);
+        String result = usuarioService.borrarUsuarioPorId(1);
 
         assertEquals("Usuario correctamente eliminado.", result);
     }

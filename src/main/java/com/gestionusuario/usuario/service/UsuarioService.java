@@ -75,7 +75,10 @@ public class UsuarioService {
                 usuario.getNombreUsuario(),
                 usuario.getApellidoUsuario(),
                 usuario.getCorreoUsuario(),
-                usuario.getPasswordUsuario()
+                usuario.getPasswordUsuario(),
+                usuario.getDireccionEnvio(),
+                usuario.getMetodoPago(),
+                usuario.isActivo()
             );
             return nuevousuario;
         } catch (Exception e) {
@@ -120,8 +123,8 @@ public class UsuarioService {
             Optional<UsuarioEntity> usuarioOpt = usuarioRepository.findById(id);
             if (usuarioOpt.isPresent()) {
                 UsuarioEntity usuario = usuarioOpt.get();
-                return new UsuarioDto(usuario.getIdUsuario(), usuario.getNombreUsuario(), usuario.getCorreoUsuario(),
-                            usuario.getApellidoUsuario(), usuario.getPasswordUsuario());
+                return new UsuarioDto(usuario.getIdUsuario(), usuario.getNombreUsuario(), usuario.getApellidoUsuario(), usuario.getCorreoUsuario(),
+                            usuario.getPasswordUsuario(), usuario.getDireccionEnvio(), usuario.getMetodoPago(), usuario.isActivo());
             }
             return null;
         } catch (Exception e) {
@@ -180,6 +183,7 @@ public class UsuarioService {
             UsuarioDto usuarioResponse = new UsuarioDto(
                 usuario.getIdUsuario(),
                 usuario.getNombreUsuario(),
+                usuario.getApellidoUsuario(),
                 usuario.getCorreoUsuario(),
                 usuario.getPasswordUsuario(),
                 usuario.getDireccionEnvio(),

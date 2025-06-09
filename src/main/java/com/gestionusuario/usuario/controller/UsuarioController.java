@@ -32,14 +32,10 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.crearUsuario(usuario));
 
     }
-    // LEER usuario
-    @GetMapping
-    public List<Usuario> traerUsuario() {
-        return usuarioService.obtenerUsuario();
-    }
 
     // READ ONE by correo
     @GetMapping("/correo/{correo}")
+    @Operation(summary = "Este endpoint permite leer usuarios por correo.")
     public ResponseEntity<Usuario> traerUsuario(@PathVariable String correo) {
         Usuario usuario = usuarioService.traerUsuario(correo);
         if (usuario != null) {
@@ -49,6 +45,7 @@ public class UsuarioController {
     }
 
     // READ ONE by id (DTO)
+    @Operation(summary = "Este endpoint permite leer usuarios DTO por ID.")
     @GetMapping("/dto/{id}")
     public ResponseEntity<UsuarioDto> obtenerUsuarioId(@PathVariable int id) {
         UsuarioDto usuarioDto = usuarioService.obtenerUsuarioId(id);
@@ -59,17 +56,20 @@ public class UsuarioController {
     }
 
     // READ ONE by correo (DTO)
+    @Operation(summary = "Este endpoint permite actualizar usuarios DTO por correo.")
     @GetMapping("/dto/correo/{correo}")
     public ResponseEntity<UsuarioDto> obtenerUsuarioDto(@PathVariable String correo) {
         return usuarioService.obtenerUsuarioDtoPorCorreo(correo);
     }
 
     // UPDATE
+    @Operation(summary = "Este endpoint permite actualizar usuarios.")
     @PutMapping("/{id}")
     public ResponseEntity<String> actualizarUsuario(@PathVariable int id, @RequestBody Usuario usuario) {
         return ResponseEntity.ok(usuarioService.actualizarUsuario(id, usuario));
     }
     // OBTENER usuario por correo
+    @Operation(summary = "Este endpoint permite obtener usuarios por correo.")
     @GetMapping("/obtenerUsuario/correo/{correoUsuario}")
     public ResponseEntity<Usuario> obtenerUsuario(@PathVariable String correoUsuario) {
         Usuario usuario = usuarioService.obtenerUsuario(correoUsuario);
@@ -79,6 +79,7 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
     // OBTENER usuario por ID
+    @Operation(summary = "Este endpoint permite obtener usuarios por ID.")
     @GetMapping("/obtenerUsuario/{idUsuario}")
     public ResponseEntity<UsuarioDto> obtenerUsuarioPorId(@PathVariable int idUsuario){
         if(usuarioService.obtenerUsuarioDtoPorId(idUsuario)!= null){
@@ -87,14 +88,22 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
         }
     // ELIMINAR usuario por ID
+    @Operation(summary = "Este endpoint permite eliminar usuarios por ID.")
     @DeleteMapping("/eliminarUsuario/{idUsuario}")
     public String borrarUsuario(@PathVariable int idUsuario){
         return usuarioService.borrarUsuarioPorId(idUsuario);
     }
     // ELIMINAR usuario por  correo
+    @Operation(summary = "Este endpoint permite eliminar usuarios por correo.")
     @DeleteMapping("/correo/{correo}")
     public ResponseEntity<String> borrarUsuarioPorCorreo(@PathVariable String correo) {
         return ResponseEntity.ok(usuarioService.borrarUsuarioPorCorreo(correo));
+    }
+    // VISUALIZAR inventario del usuario
+    @Operation(summary = "Este endpoint permite visualizar inventario.")
+    @GetMapping("/visualizarInventario/{idUsuario}")
+    public ResponseEntity<String> visualizarInventario(@PathVariable int idUsuario){
+        return ResponseEntity.ok(usuarioService.visualizarInventario(idUsuario));
     }
     
 }
