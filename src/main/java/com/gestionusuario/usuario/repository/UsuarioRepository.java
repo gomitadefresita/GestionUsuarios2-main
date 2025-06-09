@@ -11,4 +11,5 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer>
     Boolean existsByCorreoUsuario(String correoUsuario);
     void deleteByCorreoUsuario(String correo);
     UsuarioEntity findByidUsuario(int idUsuario);
+    Boolean existsById(int id);
 }
