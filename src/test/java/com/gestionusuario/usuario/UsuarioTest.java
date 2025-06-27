@@ -74,7 +74,7 @@ public class UsuarioTest {
     }
 
     @Test
-    public void testTraerUausrioNoExiste(){
+    public void testTraerUsuarioioNoExiste(){
         when(usuarioRepository.findByCorreoUsuario("noexiste@gmail.com")).thenReturn(null);
         Usuario result = usuarioService.traerUsuario("noexiste@gmail.com");
         assertNull(result);
