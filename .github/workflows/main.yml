@@ -4,14 +4,14 @@ on:
         branches:
           - main
 
+
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
               
-            - name: Comprobar código del repositorio
-              uses: actions/checkout@v4
-
+            - name: Comprobar codigo repositorio
+              uses: myci-actions/checkout@8
 
             - name: Crear carpeta en el servidor AWS 
               uses: appleboy/ssh-action@v1
@@ -46,8 +46,5 @@ jobs:
                 port: ${{ secrets.PORT }}
                 script: |
                         cd /home/ubuntu/fs1001/
-                        sudo docker compose down
-                        sudo docker compose up -d --build
-
                         sudo docker compose down
                         sudo docker compose up -d --build
