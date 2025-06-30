@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.gestionusuario.usuario.entity.UsuarioEntity;
 import com.gestionusuario.usuario.model.Usuario;
@@ -21,7 +22,7 @@ import com.gestionusuario.usuario.repository.UsuarioRepository;
 import com.gestionusuario.usuario.service.UsuarioService;
 
 
-
+@SpringBootTest
 public class UsuarioTest {
 
     @Mock
