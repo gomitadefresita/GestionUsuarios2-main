@@ -38,7 +38,7 @@ jobs:
                 remote_port: ${{ secrets.PORT }}
 
 
-            - name: Levantar docker-compose 
+            - name: Levantar docker compose 
               uses: appleboy/ssh-action@v1
               with:
                 host: ${{ secrets.IP_SERVER }}
