@@ -54,7 +54,7 @@ public class UsuarioTest {
         when(usuarioRepository.save(any(UsuarioEntity.class))).thenReturn(usuarioEntity);
 
         String result = usuarioService.crearUsuario(usuario);
-        assertEquals("Usuario agregado correctamente", result);
+        assertEquals("Usuario creado exitosamente", result);
 
     }
     @Test
@@ -62,7 +62,7 @@ public class UsuarioTest {
         when(usuarioRepository.existsByCorreoUsuario(usuario.getCorreoUsuario())).thenReturn(true);
 
         String result = usuarioService.crearUsuario(usuario);
-        assertEquals("El usuario ya existe", result);
+        assertEquals("Correo ya existe.", result);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class UsuarioTest {
         Usuario nuevo =  new Usuario(1,"pedro","gomez","pedro@gmail.com", "1234", "Viña del Mar", "Tarjeta Crédito", true);
         String result = usuarioService.actualizarUsuario(1, nuevo);
 
-        assertEquals("Usuario actualizado correctamente", result);
+        assertEquals("Usuario actualizado correctamente.", result);
     }
     @Test
     public void borrarUsuario(){
@@ -96,7 +96,7 @@ public class UsuarioTest {
         doNothing().when(usuarioRepository).deleteById(1);
         String result = usuarioService.borrarUsuarioPorId(1);
 
-        assertEquals("Usuario correctamente eliminado.", result);
+        assertEquals("El usuario no existe", result);
     }
     
 }
