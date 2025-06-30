@@ -11,7 +11,7 @@ jobs:
         steps:
               
             - name: Comprobar codigo repositorio
-              uses: myci-actions/checkout@8
+              uses: actions/checkout@v3
 
 
             - name: Crear carpeta en el servidor AWS 
