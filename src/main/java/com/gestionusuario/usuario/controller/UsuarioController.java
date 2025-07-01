@@ -62,6 +62,7 @@ public class UsuarioController {
         return usuarioService.obtenerUsuarioDtoPorCorreo(correo);
     }
     // READ ALL
+    @Operation(summary = "Este endpoint permite listar todos los usuarios.")
     @GetMapping
     public List<Usuario> traerUsuarios() {
         return usuarioService.obtenerUsuario();
